@@ -20,6 +20,7 @@
         ./flakelight-darwin/darwinModules.nix
         ./flakelight-darwin/darwinConfigurations.nix
       ];
+      templates = import ./templates;
       inputs.nix-darwin = lib.mkDefault nix-darwin;
       systems = [ "aarch64-darwin" "x86_64-darwin" ];
     };
