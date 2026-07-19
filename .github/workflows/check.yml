@@ -1,0 +1,26 @@
+name: Check flake
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Check flake
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix flake check --all-systems
+      - run: nix eval .#tests
+      - run: |
+          nix flake check ./templates/basic --all-systems \
+            --override-input flakelight-darwin .
+      - run: |
+          nix flake check ./templates/autoload --all-systems \
+            --override-input flakelight-darwin .
+          
