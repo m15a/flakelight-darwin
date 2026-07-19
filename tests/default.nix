@@ -15,14 +15,14 @@ in {
   darwinConfigurations = test (flakelight-darwin ./empty ({ lib, ... }: {
     darwinConfigurations.test = {
       system = "aarch64-darwin";
-      modules = [{ system.stateVersion = 4; }];
+      modules = [{ system.stateVersion = 6; }];
     };
   })) (f: f ? darwinConfigurations.test.config.system.build.toplevel);
 
   darwinConfigurationsManual = test (flakelight-darwin ./empty ({ lib, ... }: {
     darwinConfigurations.test = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = [{ system.stateVersion = 4; }];
+      modules = [{ system.stateVersion = 6; }];
     };
   })) (f: f ? darwinConfigurations.test.config.system.build.toplevel);
 
