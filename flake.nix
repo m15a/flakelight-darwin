@@ -13,7 +13,8 @@
     };
   };
 
-  outputs = { flakelight, nix-darwin, ... }@inputs:
+  outputs =
+    { flakelight, nix-darwin, ... }@inputs:
     flakelight ./. {
       imports = [ flakelight.flakelightModules.extendFlakelight ];
       templates = import ./templates;
